@@ -1,10 +1,18 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+import { SemestreComponent } from './components/semestre/semestre.component';
 
+const routes: Routes = [
+  {path: 'semestre', component:SemestreComponent}
+];
+
+/*
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-})
-export class AppRoutingModule { }
+})*/
+export const appRoutingProviders: any[] = []; 
+export const routing: ModuleWithProviders<any> = RouterModule.forRoot(routes);
+
+/*export class AppRoutingModule { } */
