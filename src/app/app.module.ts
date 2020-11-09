@@ -10,11 +10,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SemestreComponent } from './components/semestre/semestre.component';
 import {MaterialModule} from './material/material.module';
+import { EditSemestreComponent } from './components/edit-semestre/edit-semestre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SemestreComponent
+    SemestreComponent,
+    EditSemestreComponent
   ],
   imports: [
     BrowserModule,

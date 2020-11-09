@@ -17,9 +17,25 @@ export class SemestreService{
     ){
         this.url = Global.url;
     }
-    getSemestre():Observable<any>{
+    getSemestres():Observable<any>{
         let headers = new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url,{headers:headers});
+        return this._http.get(this.url + 'semestre/listar',{headers:headers});
+    }
+    crearSemestre(semestre:Semestre): Observable<any>{
+        let params = JSON.stringify(semestre);
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+
+        return this._http.post(this.url + 'semestre/crear', params,{headers:headers});
+    }
+    
+    getSemestre(id):Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+ 'semestre/listar/' + id,{headers:headers});
+    }
+    updateSemestre(semestre:Semestre):Observable<any>{
+        let params = JSON.stringify(semestre);
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+        return this._http.put(this.url + 'semestre/update/' + semestre.SEMESTRE_ID,params,{headers:headers})
     }
 
 

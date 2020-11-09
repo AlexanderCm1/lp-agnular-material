@@ -3,6 +3,22 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-table {
-    width: 100%;
-  }
+
+
+.semestre-datos{
+  width: 50%;
+  margin: 10px auto;
+}
+.navbar{
+  background-color: #992e45;
+}
+.spacio{
+  flex: 1 1 auto;
+}
+.boton_form{
+  margin-right: 2rem;
+}
+.container-form{
+  width: 50%;
+  margin: 0 auto;
+}
