@@ -37,6 +37,11 @@ export class SemestreService{
         let headers = new HttpHeaders().set('Content-Type','application/json');
         return this._http.put(this.url + 'semestre/update/' + semestre.SEMESTRE_ID,params,{headers:headers})
     }
+    deleteSemestre(id): Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+        return this._http.delete(this.url+ '/semestre/delete/' + id,{headers:headers});
+
+    }
 
 
 }

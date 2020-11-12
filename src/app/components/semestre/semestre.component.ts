@@ -7,6 +7,9 @@ import {SemestreService} from '../../services/semestre.service';
 import {Global} from '../../services/global';
 
 
+import Swal from 'sweetalert2';
+
+
 
 /*
 export interface PeriodicElement {
@@ -29,9 +32,11 @@ export class SemestreComponent implements OnInit {
 
   constructor(
     private _semestreService:SemestreService
+
   ) {
     this.title = "Agregar semestre";
     this.semestre = new Semestre(null,'','');
+    
 
   }
 
@@ -42,8 +47,11 @@ export class SemestreComponent implements OnInit {
     console.log(this.semestre);
     this._semestreService.crearSemestre(this.semestre).subscribe(
       response => {
+
+        Swal.fire('Creado!','Se ha creado correctamente','success').then(function(){
+          window.location.reload();
+        });
         console.log(response);
-        window.location.reload();
       },
       error => {
         console.log(<any>error);
@@ -66,5 +74,54 @@ export class SemestreComponent implements OnInit {
       },
       
     );
+  }
+  deleteSemestre(id){
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: "No podras deshacer este cambio!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminalo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._semestreService.deleteSemestre(id).subscribe(
+          response =>{
+            if(response == 0){
+              Swal.fire(
+                'Eliminado!',
+                'Semestre eliminado con exito',
+                'success'
+              ).then(function(){
+                window.location.reload();
+              })
+            }
+            
+          },
+          error => {
+    
+          }
+    
+        )
+        
+      }
+    })
+
+    /*
+    this._semestreService.deleteSemestre(id).subscribe(
+      response =>{
+        console.log(response);
+        
+        if(response.CURSOR_SEMESTRE){
+          this._router.navigate(['/delete'])
+        }
+        
+      },
+      error => {
+
+      }
+
+    )*/
   }
 }
